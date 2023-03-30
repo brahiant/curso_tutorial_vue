@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app"></div>
+    <script>
+       const vueMain = Vue.createApp({
+            data() {
+                return {
+                    text:"closed door",
+                    open:false
+                };
+            },
+            watch:{
+                /**
+                 * must have the same name as the value in data()    
+                **/
+                open(value){
+                    if(value){
+                        this.text="open door";
+                    }else{
+                        this.text="closed door"
+                    }
+                }
+            },
+            computed:{
+                label(){
+                    return this.open ? "open":"close";
+                }
+
+            },
+            template:`<div>{{text}}</div>
+            <button @click="open = !open">{{label}}</button>`,
+        }).mount("#app");
+    
+     console.log(vm);
+    </script>
+</body>
+</html>
